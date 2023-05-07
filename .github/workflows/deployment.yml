@@ -13,3 +13,11 @@ jobs:
 
       - name: Setup Nodejs
         uses: actions/setup-node@v3
+
+      - name: Setup Railway CLI
+        run: npm i -g @railway/cli
+
+      - name: Startup Railway
+        run: railway up
+        env:
+          RAILWAY_TOKEN: ${{secrets.KWYK_RAILWAY_TOKEN}}
