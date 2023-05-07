@@ -23,3 +23,63 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{secrets.KWYK_RAILWAY_TOKEN}}
+
+      - name: Send Action Trigger data to Slack
+        uses: slackapi/slack-github-action@v1.23.0
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "header",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "DipSA 56 CI/CD Submission",
+                    "emoji": true
+                  }
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Name:* KAUNG WAI YAN KYAW"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Email:* e1112934@u.nus.edu"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Metriculation:* A0269551W"
+                    },
+                    {
+                      "type": "mrkdwn",
+                      "text": "*Repository:* ${{secrets.KWYK_REPO_URL}}"
+                    }
+                  ]
+                },
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "${{secrets.KWYK_RAILWAY_URL}}"
+                  },
+                  "accessory": {
+                    "type": "button",
+                    "text": {
+                      "type": "plain_text",
+                      "text": "Go"
+                    },
+                    "url": "${{secrets.KWYK_RAILWAY_URL}}"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_TESTING_URL }}
