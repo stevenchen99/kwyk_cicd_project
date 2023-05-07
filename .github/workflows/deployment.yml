@@ -60,7 +60,7 @@ jobs:
                     },
                     {
                       "type": "mrkdwn",
-                      "text": "*Repository:* ${{secrets.KWYK_REPO_URL}}"
+                      "text": "*Repository:* ${{ secrets.KWYK_REPO_URL }}"
                     }
                   ]
                 },
@@ -68,7 +68,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "${{secrets.KWYK_RAILWAY_URL}}"
+                    "text": "${{ secrets.KWYK_RAILWAY_URL }}"
                   },
                   "accessory": {
                     "type": "button",
@@ -76,7 +76,7 @@ jobs:
                       "type": "plain_text",
                       "text": "Go"
                     },
-                    "url": "${{secrets.KWYK_RAILWAY_URL}}"
+                    "url": "${{ secrets.KWYK_RAILWAY_URL }}"
                   }
                 }
               ]
